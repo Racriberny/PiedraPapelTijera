@@ -10,12 +10,18 @@ public class EjercicioPiedraPapelTijera {
     private static String nombre = "";
     public void execute(){
         int opcion;
+        int contador = 0;
         do {
             opcion = menuPrincipal();
             switch (opcion){
                 case 1:
-                    System.out.println("Escribe un nombre para el jugador");
-                    nombre = Lib.leerLinea();
+                    if (contador == 0){
+                        System.out.println("Escribe un nombre para el jugador: ");
+                        nombre = Lib.leerLinea();
+                        contador++;
+                    }else {
+                        System.out.println("El jugador se llama " + nombre);
+                    }
                     nuevaPartida();
                 break;
                 case 2: mostrarPuntuacion();
