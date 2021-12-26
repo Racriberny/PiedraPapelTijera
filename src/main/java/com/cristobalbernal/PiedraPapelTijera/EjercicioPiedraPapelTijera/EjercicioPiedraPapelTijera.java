@@ -7,10 +7,14 @@ public class EjercicioPiedraPapelTijera {
     private static final int MIN = 1;
     private static final int MAX = 3;
     private static final int[] PUNTUACIONES = new int[N_ELEMENTOS];
+    private static final int[] PUNTUACION_PARTIDA_DE_DOS = new int[N_ELEMENTOS];
     private static String nombre = "";
+    private static String jugadorUno = "";
+    private static String jugadorDos = "";
     public void execute(){
         int opcion;
         int contador = 0;
+        int contadoJugadores = 0;
         do {
             opcion = menuPrincipal();
             switch (opcion){
@@ -26,8 +30,85 @@ public class EjercicioPiedraPapelTijera {
                 break;
                 case 2: mostrarPuntuacion();
                 break;
+                case 3:
+                    if (contador == 0){
+                        System.out.println("Escribe el nombre del jugador uno: ");
+                        jugadorUno = Lib.leerLinea();
+                        contador++;
+                        System.out.println("Escribe el nombre del jugador dos: ");
+                        jugadorDos = Lib.leerLinea();
+                        contador++;
+                    }else {
+                        System.out.println("El primer jugador se llama " + jugadorUno);
+                        System.out.println("El segundo jugador se llama " + jugadorDos);
+                    }
+                    juegoDosPersonas();
+                    break;
+                case 4:
+                    mostrarPuntuacionJuegoDosPersonas();
+                    break;
             }
         }while (opcion !=0);
+    }
+
+    public static void mostrarPuntuacionJuegoDosPersonas() {
+        System.out.println("EMPATE: " + PUNTUACION_PARTIDA_DE_DOS[0]);
+        System.out.println("El jugador uno " + jugadorUno +  " lleva una puntuacion de: " + PUNTUACION_PARTIDA_DE_DOS[2]);
+        System.out.println("El jugador dos " + jugadorDos +  " lleva una puntuacion de: " + PUNTUACION_PARTIDA_DE_DOS[1]);
+    }
+
+    public static void juegoDosPersonas() {
+        int opcionJugadorUno = menuJuego();
+        int opcionJugadorDos = menuJuego();
+        switch (opcionJugadorUno){
+            case 1:
+                switch (opcionJugadorDos){
+                    case 1: System.out.println("Empate");
+                        Lib.intro();
+                        PUNTUACION_PARTIDA_DE_DOS[0]++;
+                        break;
+                    case 2: System.out.println("Ha ganado " + jugadorDos);
+                        System.out.println("El PAPEL envuelve la PIEDRA");
+                        PUNTUACION_PARTIDA_DE_DOS[1]++;
+                        Lib.intro();
+                        break;
+                    case 3: System.out.println("Ha ganado " + jugadorUno);
+                        System.out.println("La PIEDRA rompe las TIJERAS");
+                        PUNTUACION_PARTIDA_DE_DOS[2]++;
+                        Lib.intro();
+                        break;
+                }break;
+            case 2:
+                switch (opcionJugadorDos){
+                    case 1: System.out.println("Ha ganado " + jugadorUno);
+                        PUNTUACION_PARTIDA_DE_DOS[2]++;
+                        Lib.intro();
+                        break;
+                    case 2: System.out.println("Empate");
+                        PUNTUACION_PARTIDA_DE_DOS[0]++;
+                        Lib.intro();
+                        break;
+                    case 3: System.out.println("Ha ganado " + jugadorDos);
+                        PUNTUACION_PARTIDA_DE_DOS[1]++;
+                        Lib.intro();
+                        break;
+                }break;
+            case 3:
+                switch (opcionJugadorDos){
+                    case 1: System.out.println("Ha ganado " + jugadorUno);
+                        PUNTUACION_PARTIDA_DE_DOS[2]++;
+                        Lib.intro();
+                        break;
+                    case 2: System.out.println("Ha ganado " + jugadorDos);
+                        PUNTUACION_PARTIDA_DE_DOS[1]++;
+                        Lib.intro();
+                        break;
+                    case 3: System.out.println("Empate!");
+                        PUNTUACION_PARTIDA_DE_DOS[0]++;
+                        Lib.intro();
+                        break;
+                }break;
+        }
     }
 
     public static void mostrarPuntuacion() {
@@ -102,6 +183,8 @@ public class EjercicioPiedraPapelTijera {
         System.out.println("---------------------");
         System.out.println("1. Nueva Partida...");
         System.out.println("2. Mostrar puntuaciones...");
+        System.out.println("3. Juego dos personas...");
+        System.out.println("4. Puntuacion Juego Dos Personas...");
         System.out.println("--------------------------");
         System.out.println("0. Salir");
         System.out.println("Elige una opcion: ");
