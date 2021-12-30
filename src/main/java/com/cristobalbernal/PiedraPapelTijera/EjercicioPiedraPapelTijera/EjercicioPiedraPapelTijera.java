@@ -95,11 +95,11 @@ public class EjercicioPiedraPapelTijera {
                 }break;
             case 3:
                 switch (opcionJugadorDos){
-                    case 1: System.out.println("Ha ganado " + jugadorUno);
+                    case 1: System.out.println("Ha ganado " + jugadorDos);
                         PUNTUACION_PARTIDA_DE_DOS[2]++;
                         Lib.intro();
                         break;
-                    case 2: System.out.println("Ha ganado " + jugadorDos);
+                    case 2: System.out.println("Ha ganado " + jugadorUno);
                         PUNTUACION_PARTIDA_DE_DOS[1]++;
                         Lib.intro();
                         break;
