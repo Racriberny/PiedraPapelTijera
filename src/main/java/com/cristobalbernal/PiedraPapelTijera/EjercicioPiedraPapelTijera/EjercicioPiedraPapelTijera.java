@@ -58,8 +58,8 @@ public class EjercicioPiedraPapelTijera {
     }
 
     public static void juegoDosPersonas() {
-        int opcionJugadorUno = menuJuego();
-        int opcionJugadorDos = menuJuego();
+        int opcionJugadorUno = menuJuegoUno(jugadorUno);
+        int opcionJugadorDos = menuJuegoDos(jugadorDos);
         switch (opcionJugadorUno){
             case 1:
                 switch (opcionJugadorDos){
@@ -81,6 +81,7 @@ public class EjercicioPiedraPapelTijera {
             case 2:
                 switch (opcionJugadorDos){
                     case 1: System.out.println("Ha ganado " + jugadorUno);
+                        System.out.println("El PAPEL envuelve la PIEDRA");
                         PUNTUACION_PARTIDA_DE_DOS[2]++;
                         Lib.intro();
                         break;
@@ -89,6 +90,7 @@ public class EjercicioPiedraPapelTijera {
                         Lib.intro();
                         break;
                     case 3: System.out.println("Ha ganado " + jugadorDos);
+                        System.out.println("La TIJERA corta el PAPEL");
                         PUNTUACION_PARTIDA_DE_DOS[1]++;
                         Lib.intro();
                         break;
@@ -96,10 +98,12 @@ public class EjercicioPiedraPapelTijera {
             case 3:
                 switch (opcionJugadorDos){
                     case 1: System.out.println("Ha ganado " + jugadorDos);
+                        System.out.println("La PIEDRA rompe el TIJERA");
                         PUNTUACION_PARTIDA_DE_DOS[2]++;
                         Lib.intro();
                         break;
                     case 2: System.out.println("Ha ganado " + jugadorUno);
+                        System.out.println("La TIJERA corta el PAPEL");
                         PUNTUACION_PARTIDA_DE_DOS[1]++;
                         Lib.intro();
                         break;
@@ -194,6 +198,30 @@ public class EjercicioPiedraPapelTijera {
 
     }
     public static int menuJuego(){
+        int opcion = 0;
+        System.out.println("**************");
+        System.out.println("*   ELIGE    *");
+        System.out.println("**************");
+        System.out.println("1. Piedra");
+        System.out.println("2. Papel");
+        System.out.println("3. Tijeras");
+        System.out.println("Indica tu opcion: ");
+        opcion = Lib.leerInt();
+        return opcion;
+    }
+    public static int menuJuegoUno(String nombre){
+        int opcion = 0;
+        System.out.println("**************");
+        System.out.println("*   ELIGE    *");
+        System.out.println("**************");
+        System.out.println("1. Piedra");
+        System.out.println("2. Papel");
+        System.out.println("3. Tijeras");
+        System.out.println("Indica tu opcion: ");
+        opcion = Lib.leerInt();
+        return opcion;
+    }
+    public static int menuJuegoDos(String nombre){
         int opcion = 0;
         System.out.println("**************");
         System.out.println("*   ELIGE    *");
