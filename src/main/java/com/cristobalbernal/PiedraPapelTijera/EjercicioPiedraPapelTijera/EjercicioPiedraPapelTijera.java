@@ -31,22 +31,22 @@ public class EjercicioPiedraPapelTijera {
                 case 2: mostrarPuntuacion();
                 break;
                 case 3:
-                    if (contador == 0){
+                    if (contadoJugadores == 0){
                         System.out.println("Escribe el nombre del jugador uno: ");
                         jugadorUno = Lib.leerLinea();
-                        contador++;
+                        contadoJugadores++;
                         System.out.println("Escribe el nombre del jugador dos: ");
                         jugadorDos = Lib.leerLinea();
-                        contador++;
+                        contadoJugadores++;
                     }else {
                         System.out.println("El primer jugador se llama " + jugadorUno);
                         System.out.println("El segundo jugador se llama " + jugadorDos);
                     }
                     juegoDosPersonas();
-                    break;
+                break;
                 case 4:
                     mostrarPuntuacionJuegoDosPersonas();
-                    break;
+                break;
             }
         }while (opcion !=0);
     }
@@ -58,8 +58,8 @@ public class EjercicioPiedraPapelTijera {
     }
 
     public static void juegoDosPersonas() {
-        int opcionJugadorUno = menuJuegoUno(jugadorUno);
-        int opcionJugadorDos = menuJuegoDos(jugadorDos);
+        int opcionJugadorUno = menuJugadorUno(jugadorUno);
+        int opcionJugadorDos = menuJugadorDos(jugadorDos);
         switch (opcionJugadorUno){
             case 1:
                 switch (opcionJugadorDos){
@@ -77,7 +77,8 @@ public class EjercicioPiedraPapelTijera {
                         PUNTUACION_PARTIDA_DE_DOS[2]++;
                         Lib.intro();
                         break;
-                }break;
+                }
+            break;
             case 2:
                 switch (opcionJugadorDos){
                     case 1: System.out.println("Ha ganado " + jugadorUno);
@@ -94,7 +95,8 @@ public class EjercicioPiedraPapelTijera {
                         PUNTUACION_PARTIDA_DE_DOS[1]++;
                         Lib.intro();
                         break;
-                }break;
+                }
+            break;
             case 3:
                 switch (opcionJugadorDos){
                     case 1: System.out.println("Ha ganado " + jugadorDos);
@@ -111,7 +113,8 @@ public class EjercicioPiedraPapelTijera {
                         PUNTUACION_PARTIDA_DE_DOS[0]++;
                         Lib.intro();
                         break;
-                }break;
+                }
+            break;
         }
     }
 
@@ -122,59 +125,75 @@ public class EjercicioPiedraPapelTijera {
     }
 
     public static void nuevaPartida() {
-        int opcion = menuJuego();
+        int opcion = menuJuego(nombre);
         int numeroCpu = Lib.numeroAleatorio(MIN,MAX);
         switch (numeroCpu){
             case 1:
                 System.out.println("La CPU ha sacado PIEDRA!!");
                 switch (opcion){
+                    //Piedra
                     case 1: System.out.println("Empate");
                             Lib.intro();
                             PUNTUACIONES[0]++;
                     break;
+                    //Papel
                     case 2: System.out.println("Ha ganado " + nombre);
                             System.out.println("El PAPEL envuelve la PIEDRA");
                             PUNTUACIONES[1]++;
                             Lib.intro();
                     break;
+                    //Tijera
                     case 3: System.out.println("Ha ganado la CPU");
                             System.out.println("La PIEDRA rompe las TIJERAS");
                             PUNTUACIONES[2]++;
                             Lib.intro();
                     break;
-                }break;
+                }
+            break;
             case 2:
                 System.out.println("La CPU ha sacado PAPEL!!");
                 switch (opcion){
+                    //Piedra
                     case 1: System.out.println("Ha ganado la CPU");
+                            System.out.println("El PAPEL envuelve la PIEDRA");
                             PUNTUACIONES[2]++;
                             Lib.intro();
                     break;
+                    //Papel
                     case 2: System.out.println("Empate");
                             PUNTUACIONES[0]++;
                             Lib.intro();
                     break;
+                    //Tijera
                     case 3: System.out.println("Ha ganado " + nombre);
+                            System.out.println("La TIJERA rompe el PAPEL");
                             PUNTUACIONES[1]++;
                             Lib.intro();
                     break;
-                }break;
+                }
+            break;
             case 3:
                 System.out.println("La CPU ha sacado TIJERA");
                 switch (opcion){
+                    //Piedra
                     case 1: System.out.println("Ha ganado " + nombre);
+                            System.out.println("la PIEDRA rompe la TIJERA");
                             PUNTUACIONES[1]++;
                             Lib.intro();
                     break;
+                    //Papel
                     case 2: System.out.println("Ha ganado la CPU");
+                            System.out.println("La TIJERA corta el PAPEL");
                             PUNTUACIONES[2]++;
                             Lib.intro();
                     break;
+                    //Tijera
                     case 3: System.out.println("Empate!");
                             PUNTUACIONES[0]++;
                             Lib.intro();
                     break;
-                }break;
+                }
+            break;
         }
     }
 
@@ -197,10 +216,10 @@ public class EjercicioPiedraPapelTijera {
         return opcion;
 
     }
-    public static int menuJuego(){
+    public static int menuJuego(String nombre){
         int opcion = 0;
         System.out.println("**************");
-        System.out.println("*   ELIGE    *");
+        System.out.println("*   ELIGE  * " + nombre);
         System.out.println("**************");
         System.out.println("1. Piedra");
         System.out.println("2. Papel");
@@ -209,10 +228,10 @@ public class EjercicioPiedraPapelTijera {
         opcion = Lib.leerInt();
         return opcion;
     }
-    public static int menuJuegoUno(String nombre){
+    public static int menuJugadorUno(String nombre){
         int opcion = 0;
         System.out.println("**************");
-        System.out.println("*   ELIGE    *");
+        System.out.println("*   ELIGE  * " + nombre);
         System.out.println("**************");
         System.out.println("1. Piedra");
         System.out.println("2. Papel");
@@ -221,10 +240,10 @@ public class EjercicioPiedraPapelTijera {
         opcion = Lib.leerInt();
         return opcion;
     }
-    public static int menuJuegoDos(String nombre){
+    public static int menuJugadorDos(String nombre){
         int opcion = 0;
         System.out.println("**************");
-        System.out.println("*   ELIGE    *");
+        System.out.println("*   ELIGE  * " + nombre);
         System.out.println("**************");
         System.out.println("1. Piedra");
         System.out.println("2. Papel");
