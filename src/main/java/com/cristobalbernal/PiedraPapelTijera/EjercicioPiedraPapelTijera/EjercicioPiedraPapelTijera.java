@@ -59,8 +59,8 @@ public class EjercicioPiedraPapelTijera {
     }
 
     public static void juegoDosPersonas() {
-        int opcionJugadorUno = menuJugadorUno(jugadorUno);
-        int opcionJugadorDos = menuJugadorDos(jugadorDos);
+        int opcionJugadorUno = menuJugadores(jugadorUno);
+        int opcionJugadorDos = menuJugadores(jugadorDos);
         switch (opcionJugadorUno){
             case 1:
                 switch (opcionJugadorDos){
@@ -126,7 +126,7 @@ public class EjercicioPiedraPapelTijera {
     }
 
     public static void nuevaPartida() {
-        int opcion = menuJuego(nombre);
+        int opcion = menuJugadores(nombre);
         int numeroCpu = Lib.numeroAleatorio(MIN,MAX);
         switch (numeroCpu){
             case 1:
@@ -217,19 +217,7 @@ public class EjercicioPiedraPapelTijera {
         return opcion;
 
     }
-    public static int menuJuego(String nombre){
-        int opcion = 0;
-        System.out.println("**************");
-        System.out.println("*   ELIGE  * " + nombre);
-        System.out.println("**************");
-        System.out.println("1. Piedra");
-        System.out.println("2. Papel");
-        System.out.println("3. Tijeras");
-        System.out.println("Indica tu opcion: ");
-        opcion = Lib.leerInt();
-        return opcion;
-    }
-    public static int menuJugadorUno(String nombre){
+    public static int menuJugadores(String nombre){
         int opcion = 0;
         System.out.println("**************");
         System.out.println("*   ELIGE  * " + nombre);
@@ -242,16 +230,5 @@ public class EjercicioPiedraPapelTijera {
         return opcion;
 
     }
-    public static int menuJugadorDos(String nombre){
-        int opcion = 0;
-        System.out.println("**************");
-        System.out.println("*   ELIGE  * " + nombre);
-        System.out.println("**************");
-        System.out.println("1. Piedra");
-        System.out.println("2. Papel");
-        System.out.println("3. Tijeras");
-        System.out.println("Indica tu opcion: ");
-        opcion = Lib.leerInt();
-        return opcion;
-    }
+
 }
